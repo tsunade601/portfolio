@@ -125,7 +125,6 @@ export default function Hero() {
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
               <span>{displayed}</span>
-              <span className="animate-blink text-indigo-500">|</span>
             </div>
 
             <p className={`animate-fade-in-up delay-300 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed mb-10 ${

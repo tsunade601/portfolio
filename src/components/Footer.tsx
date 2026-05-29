@@ -11,7 +11,6 @@ export default function Footer() {
           
           <div className="flex items-center gap-2">
             <span className="text-lg font-black gradient-text">RP</span>
-            <span className={`text-sm ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>·</span>
             <span className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
               Designed & built by Roberto Pires
             </span>

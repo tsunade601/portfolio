@@ -122,7 +122,6 @@ function ExperienceCard({
             </div>
             <div className="flex items-center gap-2 mt-1 flex-wrap">
               <span className="font-semibold" style={{ color: exp.color }}>{exp.company}</span>
-              <span className={isDark ? 'text-gray-600' : 'text-gray-300'}>·</span>
               <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{exp.location}</span>
             </div>
           </div>
