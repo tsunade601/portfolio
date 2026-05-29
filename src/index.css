@@ -4,44 +4,18 @@
 
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'Fira Code', monospace;
   color-scheme: light dark;
 }
 
-html.dark {
-  color-scheme: dark;
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-/* Rest of your CSS remains the same */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
-body {
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-x: hidden;
-}
-
-.app-shell {
-  position: relative;
-  isolation: isolate;
-}
-
-/* ... (keeping the rest as is for brevity, but you can extend if needed) */
