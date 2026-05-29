@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roberto Pires — Full-Stack Developer</title>
+    <meta name="description" content="Roberto Pires — Full-Stack Developer & Creative Technologist. Building elegant digital experiences." />
+    <meta name="author" content="Roberto Pires" />
+    <meta name="theme-color" content="#6366f1" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://robertopires.dev/" />
+    <meta property="og:title" content="Roberto Pires — Full-Stack Developer" />
+    <meta property="og:description" content="Roberto Pires — Full-Stack Developer & Creative Technologist. Building elegant digital experiences." />
+    <meta property="og:image" content="https://robertopires.dev/og-image.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://robertopires.dev/" />
+    <meta property="twitter:title" content="Roberto Pires — Full-Stack Developer" />
+    <meta property="twitter:description" content="Roberto Pires — Full-Stack Developer & Creative Technologist. Building elegant digital experiences." />
+    <meta property="twitter:image" content="https://robertopires.dev/og-image.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    
+    <script>
+      (function() {
+        const stored = localStorage.getItem('rp-theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
