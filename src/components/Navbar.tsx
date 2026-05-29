@@ -43,20 +43,20 @@ export default function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out',
         scrolled 
           ? 'py-3 md:py-4 px-4' 
-          : 'py-5 md:py-6 px-6'
+          : 'py-5 md:py-6 px-5'
       )}
     >
       <div 
         className={cn(
-          'max-w-6xl mx-auto px-6 rounded-2xl transition-all duration-500 border glass-card',
+          'max-w-7xl mx-auto px-5 sm:px-6 rounded-[1.5rem] transition-all duration-500 border surface-card',
           scrolled 
             ? isDark
-              ? 'bg-slate-950/80 border-slate-800/80 shadow-[0_8px_30px_rgb(0,0,0,0.4)] shadow-indigo-950/10'
-              : 'bg-white/80 border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.05)] shadow-indigo-100/30'
+              ? 'bg-slate-950/70 border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.35)]'
+              : 'bg-white/80 border-slate-200/80 shadow-[0_16px_48px_rgba(15,23,42,0.08)]'
             : 'bg-transparent border-transparent shadow-none'
         )}
       >
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16 py-1">
           
           <a
             href="#hero"

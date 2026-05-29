@@ -5,6 +5,7 @@
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'Fira Code', monospace;
+  color-scheme: light dark;
 }
 
 * {
@@ -18,10 +19,22 @@ html {
   scroll-padding-top: 80px;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(99, 102, 241, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.08), transparent 28%);
 }
 
 /* ─── Premium Scrollbar ─── */
@@ -55,6 +68,38 @@ body {
     radial-gradient(rgba(168, 85, 247, 0.03) 1.5px, transparent 1.5px);
   background-size: 24px 24px, 48px 48px;
   background-position: 0 0, 12px 12px;
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.08), transparent 22%),
+    radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.08), transparent 20%);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.section-shell {
+  padding-block: clamp(5.5rem, 8vw, 8rem);
+}
+
+.section-inner {
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.surface-card {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 /* ─── Canvas Particle Background (Fallback) ─── */
@@ -245,7 +290,7 @@ body {
 /* ─── Section Fade-in Observer ─── */
 .section-hidden {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(36px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .section-visible {
@@ -272,4 +317,15 @@ body {
 /* Skill Progress Bars */
 .skill-bar-fill {
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

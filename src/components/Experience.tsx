@@ -1,6 +1,7 @@
 import { useTheme } from '../context/ThemeContext';
 import SectionHeader from './SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { CARD_SURFACE, SECTION_CONTAINER, SECTION_SPACING } from './layout';
 
 const EXPERIENCES = [
   {
@@ -59,12 +60,11 @@ export default function Experience() {
   const ref = useScrollReveal();
 
   return (
-    <section id="experience" ref={ref} className={`section-hidden py-24 sm:py-32 ${isDark ? 'bg-gray-950' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" ref={ref} className={`section-hidden section-shell ${SECTION_SPACING} ${isDark ? 'bg-gray-950/80' : 'bg-gray-50/80'}`}>
+      <div className={SECTION_CONTAINER}>
         <SectionHeader isDark={isDark} eyebrow="Where I've worked" title="Experience" />
 
-        <div className="mt-16 relative">
-          
+        <div className="mt-20 relative">
           <div className={`absolute left-4 md:left-8 top-0 bottom-0 w-px ${isDark ? 'bg-white/5' : 'bg-gray-200'}`} />
 
           <div className="space-y-12">
@@ -103,10 +103,10 @@ function ExperienceCard({
       </div>
 
       <div
-        className={`rounded-2xl border p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+        className={`${CARD_SURFACE} p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
           isDark
-            ? 'bg-gray-900 border-white/5 hover:border-white/10 hover:shadow-black/30'
-            : 'bg-white border-gray-100 hover:border-gray-200 hover:shadow-gray-200/60'
+            ? 'bg-gray-900/80 border-white/5 hover:border-white/10 hover:shadow-black/30'
+            : 'bg-white/85 border-gray-100 hover:border-gray-200 hover:shadow-gray-200/60'
         }`}
       >
         
