@@ -49,7 +49,3 @@ npm run preview
 - `src/context` holds the theme provider.
 - `src/hooks` contains the particle and scroll reveal behavior.
 - `src/utils` contains shared helpers.
-
-## Notes
-
-The hero image uses a local asset from `public/images/roberto.jpg`, so keep that file in place if you want the portrait to render.
