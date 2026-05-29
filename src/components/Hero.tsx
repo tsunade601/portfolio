@@ -80,9 +80,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className={`relative min-h-screen flex items-center overflow-hidden ${
+      className={`relative min-h-screen flex items-center overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24 ${
         isDark
-          ? 'bg-gray-950'
+          ? 'bg-gray-950/95'
           : 'bg-gradient-to-br from-slate-50 via-white to-indigo-50/40'
       }`}
     >
@@ -105,37 +105,36 @@ export default function Hero() {
         style={{ background: 'radial-gradient(circle, #06b6d4, transparent)' }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
-        <div className="flex flex-col items-center gap-12 lg:gap-16">
-          <div className="flex-1 flex flex-col items-center text-center">
-            <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold font-mono mb-6
-              border border-indigo-500/30 bg-indigo-500/10 text-indigo-400">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold font-mono mb-7
+              border border-indigo-500/20 bg-white/5 text-indigo-300 shadow-lg shadow-indigo-500/10 backdrop-blur">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Available for new opportunities
             </div>
 
-            <h1 className={`animate-fade-in-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-black leading-none tracking-tight mb-4 ${
+            <h1 className={`animate-fade-in-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-black leading-none tracking-tight mb-5 ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               Roberto<br />
               <span className="gradient-text">Pires</span>
             </h1>
 
-            <div className={`animate-fade-in-up delay-200 h-10 mb-6 flex items-center justify-center gap-1 text-xl sm:text-2xl font-semibold ${
+            <div className={`animate-fade-in-up delay-200 min-h-10 mb-6 flex items-center justify-center lg:justify-start gap-1 text-xl sm:text-2xl font-semibold ${
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
               <span>{displayed}</span>
-              <span className="animate-blink text-indigo-500">|</span>
             </div>
 
-            <p className={`animate-fade-in-up delay-300 max-w-xl mx-auto text-base sm:text-lg leading-relaxed mb-8 ${
+            <p className={`animate-fade-in-up delay-300 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed mb-10 ${
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
               I craft elegant, high-performance digital experiences — from scalable back-end systems
               to pixel-perfect UIs. Passionate about clean code, great design, and building things that matter.
             </p>
 
-            <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#projects"
                 className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white
@@ -164,7 +163,7 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="animate-fade-in-up delay-500 flex items-center gap-4 mt-8 justify-center">
+            <div className="animate-fade-in-up delay-500 flex items-center gap-4 mt-9 justify-center lg:justify-start">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.label}
@@ -184,7 +183,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="animate-scale-in delay-300 flex-shrink-0 relative">
+          <div className="animate-scale-in delay-300 flex-shrink-0 relative flex justify-center lg:justify-end">
             <div className="absolute inset-0 rounded-full animate-spin-slow opacity-60"
               style={{
                 background: 'conic-gradient(from 0deg, #6366f1, #a855f7, #06b6d4, #6366f1)',
@@ -196,7 +195,7 @@ export default function Hero() {
             <div className="absolute -inset-4 rounded-full blur-2xl opacity-30"
               style={{ background: 'radial-gradient(circle, #6366f1, #a855f7)' }}
             />
-            <div className="animate-float relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full p-1"
+            <div className="animate-float relative w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full p-1"
               style={{
                 background: 'linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)',
               }}
@@ -224,7 +223,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="animate-fade-in-up delay-700 flex justify-center mt-16">
+        <div className="animate-fade-in-up delay-700 flex justify-center mt-20">
           <button
             onClick={scrollDown}
             aria-label="Scroll down"
@@ -232,7 +231,7 @@ export default function Hero() {
               isDark ? 'text-gray-500' : 'text-gray-400'
             }`}
           >
-            <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
+            <span className="text-xs font-mono tracking-[0.3em] uppercase">Scroll</span>
             <svg
               className="w-5 h-5 animate-bounce"
               fill="none"

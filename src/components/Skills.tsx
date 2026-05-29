@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import SectionHeader from './SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { CARD_SURFACE, SECTION_CONTAINER, SECTION_SPACING } from './layout';
 
 const SKILL_GROUPS = [
   {
@@ -75,18 +76,18 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={ref} className={`section-hidden py-24 sm:py-32 ${isDark ? 'bg-gray-950' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+    <section id="skills" ref={ref} className={`section-hidden section-shell ${SECTION_SPACING} ${isDark ? 'bg-gray-950/80' : 'bg-gray-50/80'}`}>
+      <div className={SECTION_CONTAINER} ref={sectionRef}>
         <SectionHeader isDark={isDark} eyebrow="My toolkit" title="Skills" />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10">
           {SKILL_GROUPS.map((group) => (
             <div
               key={group.category}
-              className={`rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+              className={`${CARD_SURFACE} p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
                 isDark
-                  ? 'bg-gray-900 border-white/5 hover:shadow-black/30'
-                  : 'bg-white border-gray-100 hover:shadow-gray-100'
+                  ? 'bg-gray-900/80 border-white/5 hover:shadow-black/30'
+                  : 'bg-white/85 border-gray-100 hover:shadow-gray-100'
               }`}
             >
               
@@ -135,7 +136,7 @@ export default function Skills() {
             {TOOLS.map((tool) => (
               <div
                 key={tool.name}
-                className={`flex flex-col items-center gap-3 p-6 rounded-xl border cursor-default
+                className={`flex flex-col items-center gap-3 p-6 rounded-2xl border cursor-default
                   transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${
                   isDark
                     ? 'bg-gray-900 border-white/5 hover:border-indigo-500/30 hover:shadow-indigo-500/10'
@@ -160,7 +161,7 @@ export default function Skills() {
           ].map((s) => (
             <div
               key={s.label}
-              className={`flex items-center gap-3 px-6 py-4 rounded-xl border text-base font-medium ${
+              className={`flex items-center gap-3 px-6 py-4 rounded-2xl border text-base font-medium ${
                 isDark
                   ? 'bg-gray-900 border-white/5 text-gray-300'
                   : 'bg-white border-gray-100 text-gray-700'

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import SectionHeader from './SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { CARD_SURFACE, SECTION_CONTAINER, SECTION_SPACING } from './layout';
 
 const PROJECTS = [
   {
@@ -82,11 +83,11 @@ export default function Projects() {
   const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" ref={ref} className={`section-hidden py-24 sm:py-32 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" ref={ref} className={`section-hidden section-shell ${SECTION_SPACING} ${isDark ? 'bg-gray-900/70' : 'bg-white/70'}`}>
+      <div className={SECTION_CONTAINER}>
         <SectionHeader isDark={isDark} eyebrow="What I've built" title="Projects" />
 
-        <div className="mt-10 flex flex-wrap gap-2 justify-center">
+        <div className="mt-12 flex flex-wrap gap-2.5 justify-center">
           {FILTERS.map((f) => (
             <button
               key={f}
@@ -104,7 +105,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((project, i) => (
             <ProjectCard key={project.title} project={project} isDark={isDark} index={i} />
           ))}
@@ -147,10 +148,10 @@ function ProjectCard({
 }) {
   return (
     <div
-      className={`project-card group relative rounded-2xl border overflow-hidden ${
+      className={`project-card group relative overflow-hidden ${CARD_SURFACE} ${
         isDark
           ? 'bg-gray-800/60 border-white/5 hover:border-white/15 hover:shadow-2xl hover:shadow-black/40'
-          : 'bg-white border-gray-100 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-200/80'
+      : 'bg-white/85 border-gray-100 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-200/80'
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >

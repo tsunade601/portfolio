@@ -33,7 +33,7 @@ function AppContent() {
   return (
     <div
       className={cn(
-        'min-h-screen transition-colors duration-500 relative overflow-hidden',
+        'app-shell min-h-screen transition-colors duration-500 relative overflow-hidden',
         isDark 
           ? 'bg-[#030712] text-slate-100 bg-grid-pattern-dark' 
           : 'bg-[#fafafa] text-slate-900 bg-grid-pattern-light'

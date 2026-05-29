@@ -2,6 +2,7 @@ import { useState, FormEvent } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import SectionHeader from './SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { CARD_SURFACE, SECTION_CONTAINER, SECTION_SPACING } from './layout';
 
 const CONTACT_INFO = [
   {
@@ -89,11 +90,11 @@ export default function Contact() {
   }`;
 
   return (
-    <section id="contact" ref={ref} className={`section-hidden py-24 sm:py-32 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" ref={ref} className={`section-hidden section-shell ${SECTION_SPACING} ${isDark ? 'bg-gray-900/70' : 'bg-white/70'}`}>
+      <div className={SECTION_CONTAINER}>
         <SectionHeader isDark={isDark} eyebrow="Get in touch" title="Contact" />
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <div className="mt-20 grid grid-cols-1 lg:grid-cols-5 gap-16">
           
           <div className="lg:col-span-2 space-y-8">
             <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -104,7 +105,7 @@ export default function Contact() {
               {CONTACT_INFO.map((item) => (
                 <div
                   key={item.label}
-                  className={`flex items-center gap-5 p-6 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 ${
+                  className={`${CARD_SURFACE} flex items-center gap-5 p-6 transition-all duration-200 hover:-translate-y-0.5 ${
                     isDark ? 'border-white/5 bg-gray-800/50' : 'border-gray-100 bg-gray-50'
                   }`}
                 >
@@ -135,7 +136,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className={`mt-8 p-6 rounded-xl border ${isDark ? 'border-green-500/20 bg-green-500/5' : 'border-green-200 bg-green-50'}`}>
+            <div className={`mt-8 p-6 rounded-2xl border ${isDark ? 'border-green-500/20 bg-green-500/5' : 'border-green-200 bg-green-50'}`}>
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
                 <div>
@@ -153,7 +154,7 @@ export default function Contact() {
           <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className={`rounded-2xl border p-8 md:p-10 ${
+              className={`${CARD_SURFACE} p-8 md:p-10 ${
                 isDark ? 'bg-gray-800/40 border-white/5' : 'bg-gray-50 border-gray-100'
               }`}
             >
@@ -221,7 +222,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading' || status === 'success'}
-                className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm
+                className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-semibold text-sm
                   transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed
                   ${status === 'success'
                     ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'

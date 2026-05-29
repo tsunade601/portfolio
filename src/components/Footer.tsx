@@ -5,13 +5,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={`py-10 border-t ${isDark ? 'bg-gray-950 border-white/5' : 'bg-white border-gray-100'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className={`py-12 border-t ${isDark ? 'bg-gray-950/90 border-white/5' : 'bg-white/80 border-gray-100'}`}>
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
           
           <div className="flex items-center gap-2">
             <span className="text-lg font-black gradient-text">RP</span>
-            <span className={`text-sm ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>·</span>
             <span className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
               Designed & built by Roberto Pires
             </span>
