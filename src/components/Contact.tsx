@@ -73,11 +73,19 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    // Simulate an API call
-    await new Promise((r) => setTimeout(r, 1500));
+
+    // No backend is wired up yet, so hand off to the user's email client
+    // with the message pre-filled rather than pretending it was sent.
+    const to = 'roberto@pires.dev';
+    const subject = encodeURIComponent(form.subject || `Portfolio contact from ${form.name}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\n— ${form.name} (${form.email})`
+    );
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+
     setStatus('success');
     setForm({ name: '', email: '', subject: '', message: '' });
     setTimeout(() => setStatus('idle'), 5000);
@@ -243,7 +251,7 @@ export default function Contact() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Message Sent!
+                    Email Opened!
                   </>
                 )}
                 {status === 'error' && 'Try Again'}
@@ -259,7 +267,7 @@ export default function Contact() {
 
               {status === 'success' && (
                 <p className={`mt-3 text-center text-sm ${isDark ? 'text-green-400' : 'text-green-600'}`}>
-                  Thanks for reaching out! I'll get back to you within 24 hours. 🎉
+                  Your email app should have opened with the message pre-filled — just hit send! 🎉
                 </p>
               )}
             </form>
