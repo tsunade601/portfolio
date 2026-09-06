@@ -15,28 +15,16 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('rp-theme');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    let initialTheme: Theme = 'dark';
-    
-    if (stored === 'light' || stored === 'dark') {
-      initialTheme = stored;
-    } else {
-      initialTheme = systemDark ? 'dark' : 'light';
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('rp-theme');
+      if (stored === 'light' || stored === 'dark') return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    
-    setTheme(initialTheme);
-    setMounted(true);
-  }, []);
+    return 'dark';
+  });
 
   useEffect(() => {
-    if (!mounted) return;
-    
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
@@ -44,15 +32,25 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.remove('dark');
     }
     localStorage.setItem('rp-theme', theme);
-  }, [theme, mounted]);
+  }, [theme]);
+
+  // Listen to OS color scheme changes if user hasn't set manual preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      const stored = localStorage.getItem('rp-theme');
+      if (!stored) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, isDark: theme === 'dark' }}>
